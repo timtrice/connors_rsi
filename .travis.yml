@@ -4,4 +4,5 @@ cache: packages
 script:
   - bash code/deploy.sh
 on:
-  branch: master
+  all_branches: true
+  condition: $TRAVIS_BRANCH = ^master|develop$
