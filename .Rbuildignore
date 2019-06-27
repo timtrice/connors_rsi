@@ -1,0 +1,7 @@
+^.*\.Rproj$
+^\.Rproj\.user$
+^ConnorsRSI\.Rcheck$
+^ConnorsRSI.*\.tar\.gz$
+^ConnorsRSI.*\.tgz$
+^\.github$
+^LICENSE\.md$

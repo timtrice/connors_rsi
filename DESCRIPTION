@@ -1,0 +1,32 @@
+Package: ConnorsRSI
+Title: An Analysis of the Connors RSI(2) Trading Strategy
+Version: 0.0.0.9000
+Authors@R: 
+    person(given = "Tim",
+           family = "Trice",
+           role = c("aut", "cre"),
+           email = "tim.trice@gmail.com")
+Description: What the package does (one paragraph).
+License: MIT + file LICENSE
+Encoding: UTF-8
+LazyData: true
+Depends: 
+  R (>= 3.6.0)
+Imports:
+  here, 
+  purrr, 
+  remotes, 
+  rlang, 
+  TTR
+Suggests:
+  devtools, 
+  hrbrthemes, 
+  tidyquant, 
+  usethis, 
+  workflowr
+Remotes:
+  github::braverock/blotter, 
+  github::braverock/quantstrat, 
+  github::DavisVaughan/tidyfinance
+URL: https://github.com/timtrice/connors_rsi
+BugReports: https://github.com/timtrice/connors_rsi/issues
