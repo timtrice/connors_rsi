@@ -73,9 +73,7 @@ h6 {
 </style>
 
 
-</head>
 
-<body>
 
 <style type = "text/css">
 .main-container {
@@ -194,8 +192,6 @@ $(document).ready(function () {
 });
 </script>
 
-<div class="container-fluid main-container">
-
 <!-- tabsets -->
 
 <style type="text/css">
@@ -266,6 +262,15 @@ $(document).ready(function () {
 
 <!-- code folding -->
 
+
+
+
+</head>
+
+<body>
+
+
+<div class="container-fluid main-container">
 
 
 
@@ -348,8 +353,8 @@ div.section {
 
 
 <h1 class="title toc-ignore">Trade Statistics</h1>
-<h4 class="author"><em>Tim Trice</em></h4>
-<h4 class="date"><em>2019-03-07</em></h4>
+<h4 class="author">Tim Trice</h4>
+<h4 class="date">2019-03-07</h4>
 
 </div>
 
@@ -384,13 +389,13 @@ div.section {
 <div class="tab-content">
 <div id="summary" class="tab-pane fade in active">
 <p>
-<strong>Last updated:</strong> 2019-03-07
+<strong>Last updated:</strong> 2019-06-28
 </p>
 <p>
 <strong>Checks:</strong> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> 6 <span class="glyphicon glyphicon-exclamation-sign text-danger" aria-hidden="true"></span> 0
 </p>
 <p>
-<strong>Knit directory:</strong> <code>project/analysis/</code> <span class="glyphicon glyphicon-question-sign" aria-hidden="true" title="This is the local directory in which the code in this file was executed."> </span>
+<strong>Knit directory:</strong> <code>connors_rsi/analysis/</code> <span class="glyphicon glyphicon-question-sign" aria-hidden="true" title="This is the local directory in which the code in this file was executed."> </span>
 </p>
 <p>
 This reproducible <a href="http://rmarkdown.rstudio.com">R Markdown</a> analysis was created with <a
@@ -463,27 +468,21 @@ This reproducible <a href="http://rmarkdown.rstudio.com">R Markdown</a> analysis
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgitlabcomtriceanalyticsfinanceconnorsrsitree0fe9ff9291c12f054fd71916c7651f8ddfa5c271targetblank0fe9ff9a"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://gitlab.com/triceanalytics/finance/connors_rsi/tree/0fe9ff9291c12f054fd71916c7651f8ddfa5c271" target="_blank">0fe9ff9</a> </a>
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomtimtriceconnorsrsitreea51a79affab926ccc9898b85ca25279510d19baftargetblanka51a79aa"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/timtrice/connors_rsi/tree/a51a79affab926ccc9898b85ca25279510d19baf" target="_blank">a51a79a</a> </a>
 </p>
 </div>
-<div id="strongRepositoryversionstrongahrefhttpsgitlabcomtriceanalyticsfinanceconnorsrsitree0fe9ff9291c12f054fd71916c7651f8ddfa5c271targetblank0fe9ff9a" class="panel-collapse collapse">
+<div id="strongRepositoryversionstrongahrefhttpsgithubcomtimtriceconnorsrsitreea51a79affab926ccc9898b85ca25279510d19baftargetblanka51a79aa" class="panel-collapse collapse">
 <div class="panel-body">
 <p>
 Great! You are using Git for version control. Tracking code development and connecting the code version to the results is critical for reproducibility. The version displayed above was the version of the Git repository at the time these results were generated. <br><br> Note that you need to be careful to ensure that all relevant files for the analysis have been committed to Git prior to generating the results (you can use <code>wflow_publish</code> or <code>wflow_git_commit</code>). workflowr only checks the R Markdown file, but you know if there are other scripts or data files that it depends on. Below is the status of the Git repository when the results were generated:
 </p>
 <pre><code>
 Ignored files:
-    Ignored:    .RData
-    Ignored:    .Rhistory
-    Ignored:    .Rproj.user/
     Ignored:    analysis/figure/
 
-Untracked files:
-    Untracked:  docs/child/
-    Untracked:  docs/figure/exploratory.Rmd/
-
 Unstaged changes:
-    Modified:   README.md
+    Modified:   output/instruments.RData
+    Modified:   output/results.RData
 
 </code></pre>
 <p>
@@ -524,10 +523,27 @@ Message
 <tbody>
 <tr>
 <td>
+html
+</td>
+<td>
+<a href="https://rawcdn.githack.com/timtrice/connors_rsi/3be029a0abecb945ed325f96eab4de0fceabaffc/docs/trade_statistics.html" target="_blank">3be029a</a>
+</td>
+<td>
+Tim Trice
+</td>
+<td>
+2019-03-07
+</td>
+<td>
+Republish docs
+</td>
+</tr>
+<tr>
+<td>
 Rmd
 </td>
 <td>
-<a href="https://gitlab.com/triceanalytics/finance/connors_rsi/blob/2c2c5ceca7681fccb9967a520d5dd033d6403e57/analysis/trade_statistics.Rmd" target="_blank">2c2c5ce</a>
+<a href="https://github.com/timtrice/connors_rsi/blob/2c2c5ceca7681fccb9967a520d5dd033d6403e57/analysis/trade_statistics.Rmd" target="_blank">2c2c5ce</a>
 </td>
 <td>
 Tim Trice
@@ -544,7 +560,7 @@ Minor formatting changes
 Rmd
 </td>
 <td>
-<a href="https://gitlab.com/triceanalytics/finance/connors_rsi/blob/eb1b0eb614e174b587ecce606b63cd95d96a1336/analysis/trade_statistics.Rmd" target="_blank">eb1b0eb</a>
+<a href="https://github.com/timtrice/connors_rsi/blob/eb1b0eb614e174b587ecce606b63cd95d96a1336/analysis/trade_statistics.Rmd" target="_blank">eb1b0eb</a>
 </td>
 <td>
 Tim Trice
@@ -561,7 +577,7 @@ Modify sources
 Rmd
 </td>
 <td>
-<a href="https://gitlab.com/triceanalytics/finance/connors_rsi/blob/b2fa9ee7bdf7f872cb78a28d2f814e4a6e19ad8c/analysis/trade_statistics.Rmd" target="_blank">b2fa9ee</a>
+<a href="https://github.com/timtrice/connors_rsi/blob/b2fa9ee7bdf7f872cb78a28d2f814e4a6e19ad8c/analysis/trade_statistics.Rmd" target="_blank">b2fa9ee</a>
 </td>
 <td>
 Tim Trice
@@ -578,7 +594,7 @@ Do not echo code
 Rmd
 </td>
 <td>
-<a href="https://gitlab.com/triceanalytics/finance/connors_rsi/blob/974156a84af873cea57a42f552178ad74ebb41fa/analysis/trade_statistics.Rmd" target="_blank">974156a</a>
+<a href="https://github.com/timtrice/connors_rsi/blob/974156a84af873cea57a42f552178ad74ebb41fa/analysis/trade_statistics.Rmd" target="_blank">974156a</a>
 </td>
 <td>
 Tim Trice
@@ -595,7 +611,7 @@ Add Author, Date to yaml
 html
 </td>
 <td>
-<a href="https://glcdn.githack.com/triceanalytics/finance/connors_rsi/raw/6cae50d43df2a8d693910759ca0a11205e6c5864/docs/trade_statistics.html" target="_blank">6cae50d</a>
+<a href="https://rawcdn.githack.com/timtrice/connors_rsi/6cae50d43df2a8d693910759ca0a11205e6c5864/docs/trade_statistics.html" target="_blank">6cae50d</a>
 </td>
 <td>
 Tim Trice
@@ -612,7 +628,7 @@ Add docs
 Rmd
 </td>
 <td>
-<a href="https://gitlab.com/triceanalytics/finance/connors_rsi/blob/bd2d8f0c2df7ad201bc5100e715c8e0eb31853d2/analysis/trade_statistics.Rmd" target="_blank">bd2d8f0</a>
+<a href="https://github.com/timtrice/connors_rsi/blob/bd2d8f0c2df7ad201bc5100e715c8e0eb31853d2/analysis/trade_statistics.Rmd" target="_blank">bd2d8f0</a>
 </td>
 <td>
 Tim Trice
@@ -629,7 +645,7 @@ Refactor func <code>load_data</code>
 Rmd
 </td>
 <td>
-<a href="https://gitlab.com/triceanalytics/finance/connors_rsi/blob/6e77a82dd8c406bfa390177bad96004405f48f2a/analysis/trade_statistics.Rmd" target="_blank">6e77a82</a>
+<a href="https://github.com/timtrice/connors_rsi/blob/6e77a82dd8c406bfa390177bad96004405f48f2a/analysis/trade_statistics.Rmd" target="_blank">6e77a82</a>
 </td>
 <td>
 Tim Trice
@@ -646,7 +662,7 @@ Add Per Trade Stats draft
 Rmd
 </td>
 <td>
-<a href="https://gitlab.com/triceanalytics/finance/connors_rsi/blob/381681294bec55b623ac61b406ba254c8fed8a6a/analysis/trade_statistics.Rmd" target="_blank">3816812</a>
+<a href="https://github.com/timtrice/connors_rsi/blob/381681294bec55b623ac61b406ba254c8fed8a6a/analysis/trade_statistics.Rmd" target="_blank">3816812</a>
 </td>
 <td>
 Tim Trice
@@ -688,23 +704,23 @@ Rename Per Trade Statistics
 </tr>
 <tr class="odd">
 <td>Num.Txns</td>
-<td align="left">337</td>
+<td align="left">357</td>
 </tr>
 <tr class="even">
 <td>Num.Trades</td>
-<td align="left">151</td>
+<td align="left">160</td>
 </tr>
 <tr class="odd">
 <td>Net.Trading.PL</td>
-<td align="left">4136.283</td>
+<td align="left">4505.205</td>
 </tr>
 <tr class="even">
 <td>Avg.Trade.PL</td>
-<td align="left">27.3926</td>
+<td align="left">28.15753</td>
 </tr>
 <tr class="odd">
 <td>Med.Trade.PL</td>
-<td align="left">43.88417</td>
+<td align="left">44.09438</td>
 </tr>
 <tr class="even">
 <td>Largest.Winner</td>
@@ -716,67 +732,67 @@ Rename Per Trade Statistics
 </tr>
 <tr class="even">
 <td>Gross.Profits</td>
-<td align="left">11318.15</td>
+<td align="left">12040.86</td>
 </tr>
 <tr class="odd">
 <td>Gross.Losses</td>
-<td align="left">-7181.868</td>
+<td align="left">-7535.653</td>
 </tr>
 <tr class="even">
 <td>Std.Dev.Trade.PL</td>
-<td align="left">168.9384</td>
+<td align="left">167.1116</td>
 </tr>
 <tr class="odd">
 <td>Std.Err.Trade.PL</td>
-<td align="left">13.74802</td>
+<td align="left">13.21133</td>
 </tr>
 <tr class="even">
 <td>Percent.Positive</td>
-<td align="left">64.23841</td>
+<td align="left">65</td>
 </tr>
 <tr class="odd">
 <td>Percent.Negative</td>
-<td align="left">35.76159</td>
+<td align="left">35</td>
 </tr>
 <tr class="even">
 <td>Profit.Factor</td>
-<td align="left">1.575934</td>
+<td align="left">1.597852</td>
 </tr>
 <tr class="odd">
 <td>Avg.Win.Trade</td>
-<td align="left">116.682</td>
+<td align="left">115.7775</td>
 </tr>
 <tr class="even">
 <td>Med.Win.Trade</td>
-<td align="left">101.1243</td>
+<td align="left">101.9934</td>
 </tr>
 <tr class="odd">
 <td>Avg.Losing.Trade</td>
-<td align="left">-132.9976</td>
+<td align="left">-134.5652</td>
 </tr>
 <tr class="even">
 <td>Med.Losing.Trade</td>
-<td align="left">-83.43113</td>
+<td align="left">-85.89827</td>
 </tr>
 <tr class="odd">
 <td>Avg.Daily.PL</td>
-<td align="left">27.3926</td>
+<td align="left">28.15753</td>
 </tr>
 <tr class="even">
 <td>Med.Daily.PL</td>
-<td align="left">43.88417</td>
+<td align="left">44.09438</td>
 </tr>
 <tr class="odd">
 <td>Std.Dev.Daily.PL</td>
-<td align="left">168.9384</td>
+<td align="left">167.1116</td>
 </tr>
 <tr class="even">
 <td>Std.Err.Daily.PL</td>
-<td align="left">13.74802</td>
+<td align="left">13.21133</td>
 </tr>
 <tr class="odd">
 <td>Ann.Sharpe</td>
-<td align="left">2.57398</td>
+<td align="left">2.674781</td>
 </tr>
 <tr class="even">
 <td>Max.Drawdown</td>
@@ -784,27 +800,27 @@ Rename Per Trade Statistics
 </tr>
 <tr class="odd">
 <td>Profit.To.Max.Draw</td>
-<td align="left">1.811417</td>
+<td align="left">1.972981</td>
 </tr>
 <tr class="even">
 <td>Avg.WinLoss.Ratio</td>
-<td align="left">0.8773242</td>
+<td align="left">0.8603818</td>
 </tr>
 <tr class="odd">
 <td>Med.WinLoss.Ratio</td>
-<td align="left">1.21207</td>
+<td align="left">1.187375</td>
 </tr>
 <tr class="even">
 <td>Max.Equity</td>
-<td align="left">4439.698</td>
+<td align="left">4808.62</td>
 </tr>
 <tr class="odd">
 <td>Min.Equity</td>
-<td align="left">-631.1981</td>
+<td align="left">-262.2764</td>
 </tr>
 <tr class="even">
 <td>End.Equity</td>
-<td align="left">4136.283</td>
+<td align="left">4505.205</td>
 </tr>
 </tbody>
 </table>
@@ -1241,38 +1257,40 @@ Rename Per Trade Statistics
 </button>
 </p>
 <div id="workflowr-sessioninfo" class="collapse">
-<pre><code>R version 3.5.2 (2018-12-20)
+<pre><code>R version 3.6.0 (2017-01-27)
 Platform: x86_64-pc-linux-gnu (64-bit)
-Running under: Ubuntu 16.04.5 LTS
+Running under: Ubuntu 14.04.5 LTS
 
 Matrix products: default
-BLAS: /usr/lib/atlas-base/atlas/libblas.so.3.0
-LAPACK: /usr/lib/atlas-base/atlas/liblapack.so.3.0
+BLAS:   /home/travis/R-bin/lib/R/lib/libRblas.so
+LAPACK: /home/travis/R-bin/lib/R/lib/libRlapack.so
 
 locale:
- [1] LC_CTYPE=C.UTF-8       LC_NUMERIC=C           LC_TIME=C.UTF-8       
- [4] LC_COLLATE=C.UTF-8     LC_MONETARY=C.UTF-8    LC_MESSAGES=C.UTF-8   
- [7] LC_PAPER=C.UTF-8       LC_NAME=C              LC_ADDRESS=C          
-[10] LC_TELEPHONE=C         LC_MEASUREMENT=C.UTF-8 LC_IDENTIFICATION=C   
+ [1] LC_CTYPE=en_US.UTF-8       LC_NUMERIC=C              
+ [3] LC_TIME=en_US.UTF-8        LC_COLLATE=en_US.UTF-8    
+ [5] LC_MONETARY=en_US.UTF-8    LC_MESSAGES=en_US.UTF-8   
+ [7] LC_PAPER=en_US.UTF-8       LC_NAME=C                 
+ [9] LC_ADDRESS=C               LC_TELEPHONE=C            
+[11] LC_MEASUREMENT=en_US.UTF-8 LC_IDENTIFICATION=C       
 
 attached base packages:
 [1] stats     graphics  grDevices utils     datasets  methods   base     
 
 other attached packages:
-[1] purrr_0.2.5                blotter_0.14.2            
-[3] PerformanceAnalytics_1.5.2 FinancialInstrument_1.3.1 
-[5] quantmod_0.4-13            TTR_0.23-4                
-[7] xts_0.11-2                 zoo_1.8-4                 
+[1] purrr_0.3.2                blotter_0.14.2            
+[3] PerformanceAnalytics_1.5.3 FinancialInstrument_1.3.1 
+[5] quantmod_0.4-15            TTR_0.23-4                
+[7] xts_0.11-2                 zoo_1.8-6                 
 
 loaded via a namespace (and not attached):
- [1] Rcpp_1.0.0       knitr_1.21       whisker_0.3-2    magrittr_1.5    
- [5] workflowr_1.2.0  here_0.1         lattice_0.20-38  rlang_0.3.0.1   
- [9] quadprog_1.5-5   foreach_1.4.4    highr_0.7        stringr_1.3.1   
-[13] tools_3.5.2      grid_3.5.2       xfun_0.4         git2r_0.23.0    
+ [1] Rcpp_1.0.1       knitr_1.23       whisker_0.3-2    magrittr_1.5    
+ [5] workflowr_1.2.0  here_0.1         lattice_0.20-38  rlang_0.4.0     
+ [9] quadprog_1.5-7   foreach_1.4.4    highr_0.8        stringr_1.4.0   
+[13] tools_3.6.0      grid_3.6.0       xfun_0.8         git2r_0.25.2    
 [17] iterators_1.0.10 htmltools_0.3.6  yaml_2.2.0       rprojroot_1.3-2 
-[21] digest_0.6.18    codetools_0.2-15 fs_1.2.6         curl_3.2        
-[25] glue_1.3.0       evaluate_0.12    rmarkdown_1.11   stringi_1.2.4   
-[29] compiler_3.5.2   backports_1.1.3  boot_1.3-20     </code></pre>
+[21] digest_0.6.19    codetools_0.2-16 fs_1.3.1         curl_3.3        
+[25] glue_1.3.1       evaluate_0.14    rmarkdown_1.13   stringi_1.4.3   
+[29] compiler_3.6.0   backports_1.1.4  boot_1.3-22     </code></pre>
 </div>
 </div>
 </div>
