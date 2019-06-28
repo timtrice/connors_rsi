@@ -1,0 +1,33 @@
+---
+title: "Daily Stats"
+author: "Tim Trice"
+date: "2019-03-07"
+
+---
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(
+  echo = FALSE, 
+  message = TRUE, 
+  warning = TRUE, 
+  error = FALSE
+)
+```
+
+```{r libraries, message = FALSE, warning = FALSE}
+library(blotter)
+library(purrr)
+```
+
+```{r sources}
+source(here::here("./R/settings.R"))
+source(here::here("./R/functions.R"))
+```
+
+```{r data}
+load_data()
+```
+
+```{r daily-stats}
+knitr::kable(t(dailyStats(Portfolios = portfolio)))
+```

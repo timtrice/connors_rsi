@@ -1,0 +1,49 @@
+---
+title: "Cumulative Returns"
+author: "Tim Trice"
+date: "2019-03-07"
+
+---
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(
+  echo = FALSE, 
+  message = TRUE, 
+  warning = TRUE, 
+  error = FALSE
+)
+```
+
+```{r libraries, message = FALSE, warning = FALSE}
+library(blotter)
+library(purrr)
+library(stringr)
+```
+
+```{r sources}
+source(here::here("./R/settings.R"))
+source(here::here("./R/functions.R"))
+```
+
+```{r data}
+load_data()
+```
+
+## {.tabset}
+
+```{r cumulative-returns}
+returns <- PortfReturns(Account = account)
+
+src <- map(
+  .x = sort(names(returns)), 
+  .f = function(x) {
+    knitr::knit_expand(
+      file = here::here("./children/child_cumulative_returns.Rmd"), 
+      symbol = str_match(x, pattern = "(.+).DailyEqPL")[,2], 
+      colname = x
+    )
+  }
+)
+```
+
+`r knitr::knit(text = unlist(src))`

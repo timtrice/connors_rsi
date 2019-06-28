@@ -1,8 +1,11 @@
 ---
-output: github_document
-editor_options: 
-  chunk_output_type: console
+output github_document
 ---
+
+```{r, eval = FALSE, include = FALSE}
+# Print to markdown without distill templating
+rmarkdown::render("README.Rmd", output_format = "github_document")
+```
 
 ```{r setup, include = FALSE}
 knitr::opts_chunk$set(
@@ -21,19 +24,13 @@ url <- desc::desc_get_urls()
 
 # Get Depends, Imports and Suggests
 packages <- desc::desc_get_deps()
-
-# Get R version
-which_r <-
-  packages %>% 
-  filter(.data$package == "R") %>% 
-  pull(.data$version) %>% 
-  gsub(pattern = "^.+ (\\d+\\.?\\d+\\.?\\d*)$", replacement = "\\1", x = .)
-    
 ```
 
-[![minimal R version](https://img.shields.io/badge/R%3E%3D-`r which_r `-6666ff.svg)](https://cran.r-project.org/) 
-[![Netlify Status](https://api.netlify.com/api/v1/badges/b3a76bf0-ec22-487d-b567-7c2ea7ff4812/deploy-status)](https://app.netlify.com/sites/connorsrsi/deploys)
+[![minimal R version](https://img.shields.io/badge/R%3E%3D-3.6.0-6666ff.svg)](https://cran.r-project.org/) 
+[![Netlify Status](https://api.netlify.com/api/v1/badges/b3a76bf0-ec22-487d-b567-7c2ea7ff4812/deploy-status)](https://app.netlify.com/sites/twitterapi/deploys)
 ![Build Status](https://img.shields.io/travis/timtrice/connors_rsi/master.svg)
+![Docker Cloud Build Status](https://img.shields.io/docker/cloud/build/timtrice/distill.svg?style=popout)
+[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/timtrice/connors_rsi/master?filepath=index.Rmd)
 [![Lifecycle: experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://www.tidyverse.org/lifecycle/#experimental)
 
 # `r desc::desc_get_field("Package")` (`r desc::desc_get_version() `)
@@ -44,21 +41,50 @@ which_r <-
 
 ```{r}
 packages %>% 
-  filter(type != "Depends") %>%
+  filter(type == "Depends") %>% 
   select(-.data$type) %>% 
   knitr::kable(
     col.names = c("Package", "Version"), 
-    caption = "* - Version not specified"
+    caption = "Version not specified"
   )
 ```
 
+#### Docker
+
+A Docker image of this project is available for use.
+
+  * [timtrice/connors_rsi](https://cloud.docker.com/repository/docker/timtrice/connors_rsi)
+
+##### Run
+
+Set $LOCAL to your preferred working directory.
+
+```
+LOCAL="/home/Projects/connors_rsi"
+
+docker run \
+  -dti \
+  -e DISABLE_AUTH=true \
+  -p 8787:8787 \
+  --name connors_rsi \
+  -v $LOCAL:/home/rstudio/connors_rsi \
+  timtrice/connors_rsi:release
+```
+
+##### Shell
+
+```
+docker exec -ti connors_rsi /bin/bash
+```
+
+
 ### Built With
 
-* [R `r which_r `](https://www.r-project.org/) - The R Project for Statistical Computing
+* [R 3.6.0](https://www.r-project.org/) - The R Project for Statistical Computing
 
 ### Contributing
 
-Please read [CONTRIBUTING.md](`r url `/blob/master/.github/CONTRIBUTING.md) for details on our code of conduct, and the process for submitting pull requests to us.
+Please read [CONTRIBUTING.md](`r url `/blob/master/.github/CONTRIBUTING.md) for details on our R of conduct, and the process for submitting pull requests to us.
 
 ### Code of Conduct
 
@@ -78,4 +104,4 @@ This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md
 
 ### Acknowledgements
 
-`r usethis::use_tidy_thanks("timtrice/connors_rsi") `
+`r usethis::use_tidy_thanks() `

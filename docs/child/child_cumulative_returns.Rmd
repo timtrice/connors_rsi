@@ -1,7 +1,0 @@
-
-### {{symbol}}
-
-```{r cumulative-returns-{{symbol}}, fig.width = 10, fig.asp = 0.75, dpi = 175}
-charts.PerformanceSummary(returns${{colname}}, colorset = bluefocus)
-```
-

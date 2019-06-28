@@ -1,0 +1,197 @@
+---
+title: "Exploratory"
+author: "Tim Trice"
+date: "2019-03-07"
+---
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(
+  echo = FALSE, 
+  message = TRUE, 
+  warning = TRUE, 
+  error = FALSE, 
+  fig.width = 10, 
+  dpi = 150
+)
+```
+
+```{r libraries, message = FALSE, warning = FALSE}
+library(hrbrthemes)
+library(skimr)
+library(tidyfinance)
+library(tidyquant)
+library(tsibble)
+```
+
+```{r settings}
+source(here::here("./R/settings.R"))
+```
+
+### Data
+
+```{r get-symbols}
+df <- tq_get(symbols, from = start_date, to = end_date)
+```
+
+### Indicators
+
+```{r indicators}
+df <- 
+  df %>% 
+  group_by(symbol) %>% 
+  arrange(date) %>% 
+  tq_mutate(
+    select     = adjusted, 
+    mutate_fun = SMA, 
+    n          = 5L, 
+    col_rename = "SMA5"
+  ) %>% 
+  tq_mutate(
+    select     = adjusted, 
+    mutate_fun = SMA, 
+    n          = 200L, 
+    col_rename = "SMA200"
+  ) %>% 
+  tq_mutate(
+    select     = adjusted, 
+    mutate_fun = RSI, 
+    n          = 2L, 
+    maType     = SMA, 
+    col_rename = "RSI2"
+  )
+```
+
+### Signals
+
+```{r signals}
+df <- 
+  df %>% 
+  mutate(
+    rsi2_lt_5    = if_else(RSI2 < 5,         TRUE, FALSE), 
+    cl_gte_sma5  = if_else(adjusted >= SMA5,  TRUE, FALSE), 
+    cl_lt_sma200 = if_else(adjusted < SMA200, TRUE, FALSE), 
+    #' Given signal, BTO on market close
+    bto          = lag(rsi2_lt_5, n = 1L) & !lag(cl_lt_sma200, n = 1L),
+    #' Given signal, STC on market close
+    stc          = lag(cl_lt_sma200, n = 1L) | lag(cl_gte_sma5, n = 1L),
+    #' If position is held, then TRUE. The lag is so that buy/hold positions are 
+    #' not only for one day 
+    position     = case_when(
+      bto == TRUE  ~ TRUE,
+      stc == TRUE & lag(bto, n = 1L) == TRUE  ~ TRUE,
+      TRUE ~ FALSE
+    )
+  )
+```
+
+## Analysis
+
+### Trade validation
+
+```{r trade-validation}
+x <- which(df$bto)
+#' Validate signals meat trade requirements
+x %>% 
+  map_lgl(
+    .f = ~df$adjusted[(.x - 1)] > df$SMA200[(.x - 1)] & df$RSI2[(.x - 1)] < 5
+  ) %>% 
+  all()
+```
+
+### Cumulative Returns
+
+```{r returns}
+df_returns <- 
+  df %>% 
+  group_by(symbol) %>% 
+  as_tbl_time(
+    key = id(symbol), 
+    index = date
+  ) %>% 
+  calculate_return(adjusted)
+```
+
+```{r cumulative-return}
+df_returns %>% 
+  filter(position == TRUE) %>% 
+  mutate(
+    cum_return = cumulative_return(adjusted_return)
+  ) %>% 
+  ggplot() + 
+  aes(x = date, y = cum_return, color = symbol) + 
+  geom_line() + 
+  scale_x_date(
+    date_labels = "%Y", 
+    date_breaks = "years", 
+    date_minor_breaks = "years"
+  ) + 
+  scale_y_continuous(labels = scales::percent) + 
+  guides(color = guide_legend(title = "Symbol")) + 
+  theme_ipsum() + 
+  theme(legend.position = "bottom") + 
+  labs(
+    title = "Cumulative Returns", 
+    subtitle = "Cumulative returns for positions held.", 
+    x = "Date", 
+    y = "Cumulative Return"
+  )
+```
+
+### Drawdown
+
+```{r drawdown}
+df_returns %>% 
+  filter(position == TRUE) %>% 
+  mutate(drawdown = drawdown(adjusted_return)) %>% 
+  ggplot() + 
+  aes(x = date, y = drawdown, color = symbol) + 
+  geom_line() + 
+  scale_x_date(
+    date_labels = "%Y", 
+    date_breaks = "years", 
+    date_minor_breaks = "years"
+  ) + 
+  scale_y_continuous(labels = scales::percent) + 
+  guides(color = guide_legend(title = "Symbol")) + 
+  theme_ipsum() + 
+  theme(
+    legend.position = "bottom"
+  ) + 
+  labs(
+    title = "Drawdown", 
+    subtitle = "Projected drawdown for positions held.", 
+    x = "Date", 
+    y = "Drawdown"
+  )
+```
+
+### Projected Equity Curve
+
+```{r equity-curve}
+df_returns %>% 
+  filter(position == TRUE) %>% 
+  select(symbol, date, adjusted_return) %>% 
+  mutate(
+    cum_return = cumulative_return(adjusted_return)
+  ) %>% 
+  group_by(date) %>% 
+  summarise(daily_return = sum(cum_return, na.rm = TRUE)) %>% 
+  complete(date = seq.Date(as.Date(start_date), as.Date(end_date), by = "day")) %>% 
+  replace_na(list("daily_return" = 0)) %>% 
+  mutate(cumsum = cumsum(daily_return)) %>% 
+  ggplot() + 
+  aes(x = date, y = cumsum) + 
+  geom_line() + 
+  scale_x_date(
+    date_labels = "%Y", 
+    date_breaks = "years", 
+    date_minor_breaks = "years"
+  ) + 
+  scale_y_continuous(labels = function(x) paste0(x, "%")) + 
+  theme_ipsum() + 
+  labs(
+    title = "Projected Equity Curve", 
+    x = "Date", 
+    y = "Cumulative Return"
+  )
+```

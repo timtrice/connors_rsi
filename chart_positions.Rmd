@@ -1,0 +1,46 @@
+---
+title: "Chart Positions"
+author: "Tim Trice"
+date: "2019-03-07"
+
+---
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(
+  echo = FALSE, 
+  message = TRUE, 
+  warning = TRUE, 
+  error = FALSE
+)
+```
+
+```{r libraries, message = FALSE, warning = FALSE}
+library(blotter)
+library(magrittr)
+library(purrr)
+```
+
+```{r sources}
+source(here::here("./R/settings.R"))
+source(here::here("./R/functions.R"))
+```
+
+```{r data}
+load_data()
+```
+
+## {.tabset}
+
+```{r chart-posn}
+src <- map(
+  .x = sort(symbols), 
+  .f = function(x) {
+    knitr::knit_expand(
+      file = here::here("./children/child_chart_positions.Rmd"), 
+      title = x
+    )
+  }
+)
+```
+
+`r knitr::knit(text = unlist(src))`

@@ -4,11 +4,9 @@
 .Ruserdata
 .Rapp.history
 .DS_Store
-analysis/figure
-analysis/*png
-analysis/*html
-analysis/*_cache
-analysis/site_libs
 ConnorsRSI.Rcheck/
 ConnorsRSI*.tar.gz
 ConnorsRSI*.tgz
+docs
+README.html
+site_libs

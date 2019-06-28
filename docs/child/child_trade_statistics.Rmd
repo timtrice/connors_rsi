@@ -1,9 +1,0 @@
-
-### {{title}}
-
-```{r trade-statistics-{{title}}}
-portfolio %>% 
-  tradeStats(Symbols = "{{title}}") %>% 
-  t() %>% 
-  knitr::kable(caption = "Trade Statistics for {{title}}")
-```

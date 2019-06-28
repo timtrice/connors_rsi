@@ -1,7 +1,0 @@
-
-### {{symbol}}
-
-```{r mae-{{symbol}}, fig.width = 10, fig.asp = 0.75, dpi = 150}
-chart.ME(Portfolio = portfolio, Symbol = "{{symbol}}", type = "MAE")
-```
-

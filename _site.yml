@@ -1,0 +1,42 @@
+name: "connors_rsi"
+title: "Connors RSI(2)"
+description: |
+  An analysis of the Connors RSI(2) trading strategy
+output: distill::distill_article
+output_dir: "docs"
+navbar:
+  title: "Connors RSI"
+  left:
+    - text: "Exploratory"
+      href: exploratory.html
+    - text: "Returns"
+      icon: fa-gear
+      menu:
+      - text: "Account Returns"
+        href: account_returns.html
+      - text: "Cumulative Returns"
+        href: cumulative_returns.html
+    - text: "Equity Curve"
+      href: equity_curve.html
+    - text: "Chart Positions"
+      href: chart_positions.html
+    - text: "Chart Reconcile"
+      href: chart_reconcile.html
+    - text: "Statistics"
+      icon: fa-gear
+      menu:
+      - text: "Daily Statistics"
+        href: daily_statistics.html
+      - text: "Trade Statistics"
+        href: trade_statistics.html
+      - text: "Per Trade Statistics"
+        href: per_trade_statistics.html
+    - text: "Maximum Adverse/Favorable Excursion"
+      href: maximum_adverse_favorable_excursion.html
+  right:
+    - icon: fab fa-github
+      href: https://github.com/timtrice/connors_rsi
+    - icon: fab fa-docker
+      href: https://cloud.docker.com/repository/docker/timtrice/connors_rsi/general
+include: [".nojekyll"]
+exclude: ["children", "data", "deploy.sh", "DESCRIPTION", "Dockerfile", "LICENSE", "output", "R", "README.Rmd", "README.md"]

@@ -1,0 +1,128 @@
+---
+title: "Equity Curve"
+author: "Tim Trice"
+date: "2019-03-07"
+
+---
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(
+  echo = FALSE, 
+  message = TRUE, 
+  warning = TRUE, 
+  error = FALSE
+)
+```
+
+```{r libraries, message = FALSE, warning = FALSE}
+library(blotter)
+library(ggplot2)
+library(glue)
+library(hrbrthemes)
+library(purrr)
+```
+
+```{r sources}
+source(here::here("./R/settings.R"))
+source(here::here("./R/functions.R"))
+```
+
+```{r data}
+load_data()
+```
+
+```{r, eval = FALSE, include = FALSE}
+#' One way to do it
+a <- getAccount(account)
+equity <- a$summary$End.Eq
+plot(equity, main = "Consolidated Equity Curve")
+```
+
+## {.tabset}
+
+### Portfolio
+
+```{r equity-curve, fig.width = 10, fig.asp = 0.75, dpi = 150}
+getAccount(account)$summary$End.Eq %>% 
+  data.frame(date = index(.)) %>% 
+  ggplot() + 
+  aes(x = date, y = End.Eq) %>% 
+  geom_line() +
+  scale_x_datetime(
+    expand = c(0.01, 0.01), 
+    date_labels = "%Y", 
+    date_breaks = "years"
+  ) + 
+  scale_y_continuous(
+    labels = scales::dollar, 
+    minor_breaks = seq(9e3, 3e4, by = 1e3)
+  ) + 
+  theme_ipsum() + 
+  theme(
+    panel.border = element_rect(color = "black", fill = NA)
+  ) + 
+  labs(
+    title = "Equity Curve", 
+    subtitle = strategy, 
+    x = "Date", 
+    y = "Ending Equity"
+  )
+```
+
+### Theo Portfolio
+
+```{r equity-curve-theo-portfolio, fig.width = 10, fig.asp = 0.75, dpi = 150}
+getAccount(bh_account)$summary$End.Eq %>% 
+  data.frame(date = index(.)) %>% 
+  ggplot() + 
+  aes(x = date, y = End.Eq) %>% 
+  geom_line() +
+  scale_x_datetime(
+    expand = c(0.01, 0.01), 
+    date_labels = "%Y", 
+    date_breaks = "years"
+  ) + 
+  scale_y_continuous(
+    labels = scales::dollar, 
+    minor_breaks = seq(9e3, 3e4, by = 1e3)
+  ) + 
+  theme_ipsum() + 
+  theme(
+    panel.border = element_rect(color = "black", fill = NA)
+  ) + 
+  labs(
+    title = "Equity Curve", 
+    subtitle = bh_account, 
+    x = "Date", 
+    y = "Ending Equity"
+  )
+```
+
+### Benchmark Portfolio
+
+```{r equity-curve-benchmark-portfolio, fig.width = 10, fig.asp = 0.75, dpi = 150}
+getAccount(bm_account)$summary$End.Eq %>% 
+  data.frame(date = index(.)) %>% 
+  ggplot() + 
+  aes(x = date, y = End.Eq) %>% 
+  geom_line() +
+  scale_x_datetime(
+    expand = c(0.01, 0.01), 
+    date_labels = "%Y", 
+    date_breaks = "years"
+  ) + 
+  scale_y_continuous(
+    labels = scales::dollar, 
+    minor_breaks = seq(9e3, 3e4, by = 1e3)
+  ) + 
+  theme_ipsum() + 
+  theme(
+    panel.border = element_rect(color = "black", fill = NA)
+  ) + 
+  labs(
+    title = "Equity Curve", 
+    subtitle = bm_account, 
+    x = "Date", 
+    y = "Ending Equity"
+  )
+```

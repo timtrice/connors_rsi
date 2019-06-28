@@ -1,0 +1,49 @@
+---
+title: "Account Returns"
+author: "Tim Trice"
+date: "2019-03-07"
+
+---
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(
+  echo = FALSE, 
+  message = TRUE, 
+  warning = TRUE, 
+  error = FALSE
+)
+```
+
+```{r libraries, message = FALSE, warning = FALSE}
+library(blotter)
+library(purrr)
+```
+
+```{r sources}
+source(here::here("./R/settings.R"))
+source(here::here("./R/functions.R"))
+```
+
+```{r data}
+load_data()
+```
+
+## {.tabset}
+
+### Strategy Portfolio
+
+```{r account-returns-portfolio, fig.width = 10, fig.asp = 0.75, dpi = 150}
+plot(AcctReturns(Account = account, Portfolios = portfolio))
+```
+
+### Theoretical Portfolio
+
+```{r account-returns-theo-portfolio, fig.width = 10, fig.asp = 0.75, dpi = 150}
+plot(AcctReturns(Account = bh_account, Portfolios = bh_portfolio))
+```
+
+### Benchmark Portfolio
+
+```{r account-returns-benchmark-portfolio, fig.width = 10, fig.asp = 0.75, dpi = 150}
+plot(AcctReturns(Account = bm_account, Portfolios = bm_portfolio))
+```

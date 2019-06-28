@@ -1,0 +1,8 @@
+---
+title: "Connors RSI(2)"
+description: |
+  An Analysis of the Connors RSI(2) Trading Strategy
+site: distill::distill_website
+---
+
+## Introduction

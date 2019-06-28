@@ -1,0 +1,65 @@
+---
+title: "Maximum MAE/MFE Excursion"
+author: "Tim Trice"
+date: "2019-03-07"
+
+---
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(
+  echo = FALSE, 
+  message = TRUE, 
+  warning = TRUE, 
+  error = FALSE
+)
+```
+
+```{r libraries, message = FALSE, warning = FALSE}
+library(blotter)
+library(purrr)
+```
+
+```{r sources}
+source(here::here("./R/settings.R"))
+source(here::here("./R/functions.R"))
+```
+
+```{r data}
+load_data()
+```
+
+## Maximum Adverse Excursion {.tabset}
+
+Largest loss in an open trade
+
+```{r mae}
+src <- map(
+  .x = sort(symbols), 
+  .f = function(x) {
+    knitr::knit_expand(
+      file = here::here("./children/child_maximum_adverse_excursion.Rmd"), 
+      symbol = x
+    )
+  }
+)
+```
+
+`r knitr::knit(text = unlist(src))`
+
+## Maximum Favorable Excursion {.tabset}
+
+Peak profit in an open trade
+
+```{r mfe}
+src <- map(
+  .x = sort(symbols), 
+  .f = function(x) {
+    knitr::knit_expand(
+      file = here::here("./children/child_maximum_favorable_excursion.Rmd"), 
+      symbol = x
+    )
+  }
+)
+```
+
+`r knitr::knit(text = unlist(src))`
