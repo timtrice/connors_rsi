@@ -6,7 +6,9 @@ git clone https://github.com/timtrice/connors_rsi.git
 cd connors_rsi
 Rscript --verbose code/01_packages.R
 Rscript --verbose code/02_connors_rsi.R
-Rscript -e 'workflowr::wflow_publish("analysis/_site.yml", republish = TRUE);'
+rm -rf docs
+Rscript -e 'workflowr::wflow_build(update = TRUE, view = FALSE, verbose = TRUE)'
 git add .
-git commit -m 'Rebuild docs'
-git push --force $FULL_REPO
+MSG="Rebuild docs, $(date)"
+git commit -m "$MSG"
+git push
