@@ -11,4 +11,4 @@ Rscript -e 'workflowr::wflow_build(update = TRUE, view = FALSE, verbose = TRUE)'
 git add .
 MSG="Rebuild docs, $(date)"
 git commit -m "$MSG"
-git push
+git push $FULL_REPO
